@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{193D8129-0D7C-4EDB-A08B-E6A7E2C1F8FE}</ProjectGuid>
+    <TemplateGuid>{dd38f7fc-d7bd-488b-9242-7d8754cde80d}</TemplateGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration>Win8 Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">Win32</Platform>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals">
+    <RootNamespace>VideoDriver</RootNamespace>
+    <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VisualStudioVersion)' == '11.0'">$(VCTargetsPath11)</VCTargetsPath>
+  </PropertyGroup>
+  <PropertyGroup Label="PropertySheets">
+    <PlatformToolset>WindowsKernelModeDriver8.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>WDM</DriverType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <TargetVersion>Windows8</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <TargetVersion>Windows8</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <TargetVersion>Windows8</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <TargetVersion>Windows8</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\props\config.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="..\props\config.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\props\config.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="..\props\config.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>SimpleDisplayOnlyDriver</TargetName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>SimpleDisplayOnlyDriver</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>SimpleDisplayOnlyDriver</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>SimpleDisplayOnlyDriver</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SDK_INC_PATH);$(SolutionDir)VideoDriverInterface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>displib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SDK_INC_PATH);$(SolutionDir)VideoDriverInterface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>displib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SDK_INC_PATH);$(SolutionDir)VideoDriverInterface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>displib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SDK_INC_PATH);$(SolutionDir)VideoDriverInterface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>displib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <FilesToPackage Include="$(TargetPath)" />
+    <FilesToPackage Include="@(Inf->'%(CopyOutput)')" Condition="'@(Inf)'!=''" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bdd.cpp" />
+    <ClCompile Include="bdd_dmm.cpp" />
+    <ClCompile Include="Bios.cpp" />
+    <ClCompile Include="Conversions.cpp" />
+    <ClCompile Include="DxgkWrapper.cpp" />
+    <ClCompile Include="MappedMemory.cpp" />
+    <ClCompile Include="Mapping.cpp" />
+    <ClCompile Include="BltFuncs.cpp" />
+    <ClCompile Include="DdiDisplayCallbacks.cpp" />
+    <ClCompile Include="DdiPnpCallbacks.cpp" />
+    <ClCompile Include="MdlGuard.cpp" />
+    <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="ModeHolder.cpp" />
+    <ClCompile Include="MonitorSet.cpp" />
+    <ClCompile Include="MonitorModeSet.cpp" />
+    <ClCompile Include="HardwareDevice.cpp" />
+    <ClCompile Include="RealGraphicMode.cpp" />
+    <ClCompile Include="GraphicMode.cpp" />
+    <ClCompile Include="SourceModeSet.cpp" />
+    <ClCompile Include="SourceModeSetCreator.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TargetModeSet.cpp" />
+    <ClCompile Include="TargetModeSetCreator.cpp" />
+    <ClCompile Include="Topology.cpp" />
+    <ClCompile Include="TopologyCreator.cpp" />
+    <ClCompile Include="TopologyPathEnumerator.cpp" />
+    <ClCompile Include="TopologyPathGuard.cpp" />
+    <ClCompile Include="TopologyWrapper.cpp" />
+    <ClCompile Include="VideoDriver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseModeSet.h" />
+    <ClInclude Include="BaseModeSetWrapper.h" />
+    <ClInclude Include="Bios.h" />
+    <ClInclude Include="Conversions.h" />
+    <ClInclude Include="DxgkWrapper.h" />
+    <ClInclude Include="GraphicMode.h" />
+    <ClInclude Include="HardwareDevice.h" />
+    <ClInclude Include="ISourceMode.h" />
+    <ClInclude Include="MappedMemory.h" />
+    <ClInclude Include="MdlGuard.h" />
+    <ClInclude Include="Mode.h" />
+    <ClInclude Include="ModeHolder.h" />
+    <ClInclude Include="ModeSetGuard.h" />
+    <ClInclude Include="ModeSet.h" />
+    <ClInclude Include="bdd.hxx" />
+    <ClInclude Include="BltFuncs.h" />
+    <ClInclude Include="DdiDisplayCallbacks.h" />
+    <ClInclude Include="DdiPnpCallbacks.h" />
+    <ClInclude Include="Mapping.h" />
+    <ClInclude Include="Memory.h" />
+    <ClInclude Include="ModeGuard.h" />
+    <ClInclude Include="BaseSetCreator.h" />
+    <ClInclude Include="MonitorSet.h" />
+    <ClInclude Include="DefResolutions.h" />
+    <ClInclude Include="RealGraphicMode.h" />
+    <ClInclude Include="SourceModeSet.h" />
+    <ClInclude Include="SourceModeSetCreator.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TargetModeSet.h" />
+    <ClInclude Include="TargetModeSetCreator.h" />
+    <ClInclude Include="Topology.h" />
+    <ClInclude Include="TopologyPathEnumerator.h" />
+    <ClInclude Include="TopologyPathGuard.h" />
+    <ClInclude Include="TopologyWrapper.h" />
+    <ClInclude Include="HandleGuard.h" />
+    <ClInclude Include="VESAGraphicsModefunction.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Inf Include="SimpleDisplayOnlyDriver.inf" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

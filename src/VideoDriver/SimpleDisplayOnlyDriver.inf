@@ -1,0 +1,97 @@
+[Version]
+Signature = "$Windows NT$"
+Class=Display
+ClassGUID={4d36e968-e325-11ce-bfc1-08002be10318}
+Provider=%SDD%
+DriverVer=03/30/2018,14.47.3.422
+CatalogFile=SimpleDisplayOnlyDriver.cat
+
+[DestinationDirs]
+SDDriver.Files = 12
+
+[SourceDisksNames]
+0=%Desc_Sample%
+
+[SourceDisksNames.ia64]
+
+[SourceDisksFiles]
+SimpleDisplayOnlyDriver.sys=0
+
+[Manufacturer]
+%SDD%=SDDriverSection,NTx86.6.2,NTamd64.6.2
+
+[SDDriverSection]
+
+[SDDriverSection.NTx86.6.2]
+"Simple Display Only Driver" = SDDriverInstall, PCI\CC_0300
+"Simple Display Only Driver" = SDDriverInstall, PCI\CC_0301
+
+[SDDriverSection.NTamd64.6.2]
+"Simple Display Only Driver" = SDDriverInstall, PCI\CC_0300
+"Simple Display Only Driver" = SDDriverInstall, PCI\CC_0301
+
+
+
+[SDDriverInstall]
+Include=msdv.inf
+FeatureScore=F9
+CopyFiles = SDDriver.Files
+AddReg = SDDriver_SoftwareDeviceSettings
+
+;
+;   Install driver service
+;
+
+[SDDriverInstall.Services]
+AddService = SDDriver,0x00000002,SDDriver_Service_Install,
+
+[SDDriver_Service_Install]
+ServiceType = %SERVICE_KERNEL_DRIVER%
+StartType = %SERVICE_DEMAND_START%
+ErrorControl = %SERVICE_ERROR_IGNORE%
+ServiceBinary = %12%\SimpleDisplayOnlyDriver.sys
+
+;
+;   Display Adapter Specific Settings
+;
+
+[SDDriver.SoftwareSettings]
+AddReg = SDDriver_SoftwareDeviceSettings
+
+[SDDriver_SoftwareDeviceSettings]
+HKR,, VgaCompatible,               %REG_DWORD%, 0
+
+[SDDriver.Files]
+SimpleDisplayOnlyDriver.sys
+
+[SDDriver_EventLog_Install]
+AddReg = SDDriver_EventLog_Install.AddReg
+
+[SDDriver_EventLog_Install.AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+
+[Strings]
+
+;  *******Localizable Strings*******
+SDD= "Simple Display Only Driver"
+Desc_Sample = "Data"
+
+;  *******Non Localizable Strings*******
+
+SERVICE_BOOT_START = 0x0
+SERVICE_SYSTEM_START = 0x1
+SERVICE_AUTO_START = 0x2
+SERVICE_DEMAND_START = 0x3
+SERVICE_DISABLED = 0x4
+
+SERVICE_KERNEL_DRIVER = 0x1
+SERVICE_ERROR_IGNORE = 0x0
+SERVICE_ERROR_NORMAL = 0x1
+SERVICE_ERROR_SEVERE = 0x2
+SERVICE_ERROR_CRITICAL = 0x3
+
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_DWORD = 0x00010001
